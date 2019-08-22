@@ -4,18 +4,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiService {
-  val githubUrl = "http://api.github.com/"
+    val url = "https://jsonplaceholder.typicode.com"
 
-  fun getGithubSearch() {
-    createRetrofit<GithubService>(githubUrl)
-  }
+    fun getJsonplaceholder(){
+        createRetrofit<GithubService>(url)
+    }
 
-  inline fun <reified T> createRetrofit(url: String): T {
-    val retrofit = Retrofit.Builder()
-      .baseUrl(url)
-      .addConverterFactory(GsonConverterFactory.create())
-      .build()
+//    fun getGithubSearch() {
+//        createRetrofit<GithubService>(githubUrl)
+//    }
 
-    return retrofit.create(T::class.java)
-  }
+    inline fun <reified T> createRetrofit(url: String): T {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(url)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(T::class.java)
+    }
 }
