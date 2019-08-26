@@ -14,40 +14,40 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val mainVmModule = module {
-  viewModel { MainFragmentVM(get()) }
+    viewModel { MainFragmentVM(get()) }
 }
 
 val apiModule = module {
-  single { createOkHttpClient() }
-  single { createRetrofit<JsonPlaceholderService>(get(), Config.URL) }
+    single { createOkHttpClient() }
+    single { createRetrofit<JsonPlaceholderService>(get(), Config.URL) }
 }
 
 val repositoryModule = module {
-  single { JsonPlaceholderRepository(get()) }
+    single { JsonPlaceholderRepository(get()) }
 }
 
 val diModules = listOf(
-  mainVmModule,
-  apiModule,
-  repositoryModule
+    mainVmModule,
+    apiModule,
+    repositoryModule
 )
 
 fun createOkHttpClient(): OkHttpClient {
-  return OkHttpClient.Builder()
-    .addNetworkInterceptor(LoggerInterceptor())
-    .connectTimeout(60L, TimeUnit.SECONDS)
-    .readTimeout(60L, TimeUnit.SECONDS)
-    .connectionPool(ConnectionPool(0, 1, TimeUnit.NANOSECONDS))
-    .build()
+    return OkHttpClient.Builder()
+        .addNetworkInterceptor(LoggerInterceptor())
+        .connectTimeout(60L, TimeUnit.SECONDS)
+        .readTimeout(60L, TimeUnit.SECONDS)
+        .connectionPool(ConnectionPool(0, 1, TimeUnit.NANOSECONDS))
+        .build()
 }
 
 inline fun <reified T> createRetrofit(okHttpClient: OkHttpClient, serverUrl: String): T {
 
-  val retrofit = Retrofit.Builder()
-    .baseUrl(serverUrl)
-    .client(okHttpClient)
-    .addConverterFactory(GsonConverterFactory.create())
-    .build()
+    val retrofit = Retrofit.Builder()
+        .baseUrl(serverUrl)
+        .client(okHttpClient)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
 
-  return retrofit.create(T::class.java)
+    return retrofit.create(T::class.java)
 }

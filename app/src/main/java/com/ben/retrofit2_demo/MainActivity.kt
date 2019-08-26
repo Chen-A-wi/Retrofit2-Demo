@@ -1,8 +1,7 @@
 package com.ben.retrofit2_demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.ben.retrofit2_demo.utils.addFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.ben.retrofit2_demo.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {

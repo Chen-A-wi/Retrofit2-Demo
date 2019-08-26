@@ -2,13 +2,12 @@ package com.ben.retrofit2_demo
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.ben.retrofit2_demo.databinding.FragmentMainBinding
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
