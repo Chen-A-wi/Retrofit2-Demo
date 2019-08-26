@@ -4,7 +4,7 @@ import com.ben.retrofit2_demo.data.PostsResp
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface JsonplaceholderService {
-    @GET
-    fun Posts(): Call<List<PostsResp>>
+interface JsonPlaceholderService {
+    @GET("/posts")
+    fun posts(): Call<List<PostsResp>>
 }

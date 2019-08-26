@@ -32,13 +32,15 @@
                     android:orientation="vertical">
 
                 <TextView
+                        android:id="@+id/tvMain"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/hello_blank_fragment"
+                        android:text="@{vm.respBody}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="@string/hello_blank_fragment" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
