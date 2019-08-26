@@ -21,9 +21,9 @@ class MainFragmentVM(private val repo: JsonPlaceholderRepository) : ViewModel() 
                         response: Response<List<PostsResp>>
                     ) {
                         val sb = StringBuffer()
-                        val list = response.body()
-                        for (p in list!!) {
-                            sb.append(p.body)
+
+                        response.body()?.forEach { postsResp ->
+                            sb.append(postsResp.body)
                             sb.append("\n")
                             sb.append("---------------------\n")
                         }
