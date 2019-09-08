@@ -16,12 +16,15 @@ class MainFragmentVM(private val repo: JsonPlaceholderRepository) : ViewModel() 
         when (v.id) {
             R.id.button -> {
                 repo.posts().enqueue(object : Callback<List<PostsResp>> {
+
+                    //請求成功時進入此Function
                     override fun onResponse(
                         call: Call<List<PostsResp>>,
                         response: Response<List<PostsResp>>
                     ) {
                         val sb = StringBuffer()
 
+                        //API回傳結果
                         response.body()?.forEach { postsResp ->
                             sb.append(postsResp.body)
                             sb.append("\n")
@@ -31,6 +34,7 @@ class MainFragmentVM(private val repo: JsonPlaceholderRepository) : ViewModel() 
                         respBody.postValue(sb.toString())
                     }
 
+                    //請求失敗時進入此Function
                     override fun onFailure(call: Call<List<PostsResp>>, t: Throwable) {
 
                     }

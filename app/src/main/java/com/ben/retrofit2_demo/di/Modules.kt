@@ -44,9 +44,9 @@ fun createOkHttpClient(): OkHttpClient {
 inline fun <reified T> createRetrofit(okHttpClient: OkHttpClient, serverUrl: String): T {
 
     val retrofit = Retrofit.Builder()
-        .baseUrl(serverUrl)
-        .client(okHttpClient)
-        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(serverUrl)                                     //設定請求URL
+        .client(okHttpClient)                                   //設定OkHttp攔截器
+        .addConverterFactory(GsonConverterFactory.create())     //設定解析工具，這裡使用Gson解析，你也可以使用Jackson等
         .build()
 
     return retrofit.create(T::class.java)
