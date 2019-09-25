@@ -1,6 +1,5 @@
 package com.ben.retrofit2_demo
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
